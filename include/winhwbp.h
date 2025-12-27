@@ -89,30 +89,73 @@ typedef enum _WINHWBP_STATUS
     WINHWBP_STATUS_NO_AVAILABLE_SLOTS,
 } WINHWBP_STATUS;
 
-/* TODO: Add documentation */
-
+/*
+ * Acquires the target thread context and calls `WinHwBp_Context_Get` on it.
+ */
 WINHWBP_STATUS WinHwBp_Get(_In_ HANDLE hThread, _In_ WINHWBP_SLOT slot, _Out_ WINHWBP_PINFO pInfo);
 
+/*
+ * Retrieves information about a hardware breakpoint.
+ *
+ * See `WINHWBP_INFO` for more information.
+ */
 WINHWBP_STATUS WinHwBp_Context_Get(_In_ const PCONTEXT pContext, _In_ WINHWBP_SLOT slot, _Out_ WINHWBP_PINFO pInfo);
 
+/*
+ * Acquires the target thread context and calls `WinHwBp_Context_Set` on it.
+ */
 WINHWBP_STATUS WinHwBp_Set(_In_ HANDLE hThread, _In_ WINHWBP_SLOT slot, _In_ WINHWBP_PCONFIG pConfig);
 
+/*
+ * Sets a hardware breakpoint. The set breakpoint is enabled by default.
+ *
+ * This is equivalent to calling `WinHwBp_Context_SetEx` with `bEnable` set to `TRUE`.
+ *
+ * See `WINHWBP_CONFIG` for more information.
+ */
 WINHWBP_STATUS WinHwBp_Context_Set(_Inout_ PCONTEXT pContext, _In_ WINHWBP_SLOT slot, _In_ WINHWBP_PCONFIG pConfig);
 
+/*
+ * Sets a hardware breakpoint.
+ *
+ * See `WINHWBP_CONFIG` for more information.
+ */
 WINHWBP_STATUS WinHwBp_Context_SetEx(_Inout_ PCONTEXT pContext, _In_ WINHWBP_SLOT slot, _In_ WINHWBP_PCONFIG pConfig,
                                      _In_ BOOL bEnable);
 
+/*
+ * Acquires the target thread context and calls `WinHwBp_Context_SetAuto` on it.
+ */
 WINHWBP_STATUS WinHwBp_SetAuto(_In_ HANDLE hThread, _In_ WINHWBP_PCONFIG pConfig, _Out_ WINHWBP_PSLOT pSlot);
 
+/*
+ * Sets a hardware breakpoint in the first available slot.
+ *
+ * A slot is considered available if it is not currently enabled.
+ *
+ * See `WINHWBP_CONFIG` for more information.
+ */
 WINHWBP_STATUS WinHwBp_Context_SetAuto(_Inout_ PCONTEXT pContext, _In_ WINHWBP_PCONFIG pConfig,
                                        _Out_ WINHWBP_PSLOT pSlot);
 
+/*
+ * Acquires the target thread context and calls `WinHwBp_Context_Clear` on it.
+ */
 WINHWBP_STATUS WinHwBp_Clear(_In_ HANDLE hThread, _In_ WINHWBP_SLOT slot);
 
+/*
+ * Zeroes out the specified hardware breakpoint.
+ */
 WINHWBP_STATUS WinHwBp_Context_Clear(_Inout_ PCONTEXT pContext, _In_ WINHWBP_SLOT slot);
 
+/*
+ * Zeroes out all hardware breakpoints.
+ */
 WINHWBP_STATUS WinHwBp_ClearAll(_In_ HANDLE hThread);
 
+/*
+ * Acquires the target thread context and calls `WinHwBp_Context_ClearAll` on it.
+ */
 WINHWBP_STATUS WinHwBp_Context_ClearAll(_Inout_ PCONTEXT pContext);
 
 #endif /* WINHWBP_H */
