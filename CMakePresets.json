@@ -42,7 +42,8 @@
             "displayName": "Debug x64",
             "inherits": "base-x64",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "WINHWBP_BUILD_TESTS": "ON"
             }
         },
         {
@@ -58,7 +59,8 @@
             "displayName": "Debug x86",
             "inherits": "base-x86",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Debug"
+                "CMAKE_BUILD_TYPE": "Debug",
+                "WINHWBP_BUILD_TESTS": "ON"
             }
         },
         {

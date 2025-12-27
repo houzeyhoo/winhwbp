@@ -1,9 +1,6 @@
 include(CTest)
-
 add_executable(winhwbp_tests main.c)
-
-target_link_libraries(winhwbp_tests PRIVATE winhwbp)
-
+target_link_libraries(winhwbp_tests PRIVATE winhwbp::winhwbp)
 target_include_directories(winhwbp_tests PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
 add_test(NAME winhwbp_test_get COMMAND winhwbp_tests get)
