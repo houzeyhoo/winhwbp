@@ -110,6 +110,12 @@ static WINHWBP_STATUS ExecuteOperation(HANDLE hThread, WINHWBP_OP operation, WIN
         return WINHWBP_STATUS_INVALID_ARGUMENT;
     }
 
+    /* Don't suspend the current thread */
+    if (GetThreadId(hThread) == GetCurrentThreadId())
+    {
+        return WINHWBP_STATUS_INVALID_ARGUMENT;
+    }
+
     if (SuspendThread(hThread) == (DWORD)-1)
     {
         return WINHWBP_STATUS_SUSPEND_THREAD_FAILED;
