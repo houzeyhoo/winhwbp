@@ -158,4 +158,6 @@ WINHWBP_STATUS WinHwBp_ClearAll(_In_ HANDLE hThread);
  */
 WINHWBP_STATUS WinHwBp_Context_ClearAll(_Inout_ PCONTEXT pContext);
 
+const char *WinHwBp_StatusToString(_In_ WINHWBP_STATUS status);
+
 #endif /* WINHWBP_H */

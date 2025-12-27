@@ -338,3 +338,26 @@ WINHWBP_STATUS WinHwBp_Context_ClearAll(_Inout_ PCONTEXT pContext)
     }
     return WINHWBP_STATUS_SUCCESS;
 }
+
+const char *WinHwBp_StatusToString(_In_ WINHWBP_STATUS status)
+{
+    switch (status)
+    {
+    case WINHWBP_STATUS_SUCCESS:
+        return "The operation completed successfully.";
+    case WINHWBP_STATUS_INVALID_ARGUMENT:
+        return "One or more provided arguments are invalid.";
+    case WINHWBP_STATUS_SUSPEND_THREAD_FAILED:
+        return "Failed to suspend the target thread.";
+    case WINHWBP_STATUS_RESUME_THREAD_FAILED:
+        return "Failed to resume the target thread.";
+    case WINHWBP_STATUS_GET_CONTEXT_FAILED:
+        return "Failed to get the thread context.";
+    case WINHWBP_STATUS_SET_CONTEXT_FAILED:
+        return "Failed to set the thread context.";
+    case WINHWBP_STATUS_NO_AVAILABLE_SLOTS:
+        return "Could not find an available hardware breakpoint slot.";
+    default:
+        return "Unknown status code";
+    }
+}
