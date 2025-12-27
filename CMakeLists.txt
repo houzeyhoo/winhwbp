@@ -8,3 +8,6 @@ add_library(winhwbp STATIC
 target_include_directories(winhwbp PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+
+enable_testing()
+add_subdirectory(tests)
