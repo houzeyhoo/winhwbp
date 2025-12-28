@@ -37,11 +37,35 @@ endif()
 
 if (WINHWBP_INSTALL)
     include(GNUInstallDirs)
+    include(CMakePackageConfigHelpers)
 
     install(TARGETS winhwbp
+        EXPORT winhwbpTargets
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     )
     install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+    write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/winhwbpConfigVersion.cmake"
+        VERSION ${PROJECT_VERSION}
+        COMPATIBILITY SameMajorVersion
+    )
+
+    file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/winhwbpConfig.cmake"
+        "include(\"\${CMAKE_CURRENT_LIST_DIR}/winhwbpTargets.cmake\")\n"
+    )
+
+    install(FILES
+        "${CMAKE_CURRENT_BINARY_DIR}/winhwbpConfig.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/winhwbpConfigVersion.cmake"
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/winhwbp
+    )
+
+    install(EXPORT winhwbpTargets
+        FILE winhwbpTargets.cmake
+        NAMESPACE winhwbp::
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/winhwbp
+    )
 endif()
