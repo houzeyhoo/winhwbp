@@ -56,6 +56,15 @@
             }
         },
         {
+            "name": "release-x64-dll",
+            "displayName": "Release x64 (DLL)",
+            "inherits": "base-x64",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+        {
             "name": "debug-x86",
             "displayName": "Debug x86",
             "inherits": "base-x86",
@@ -70,7 +79,17 @@
             "displayName": "Release x86",
             "inherits": "base-x86",
             "cacheVariables": {
-                "CMAKE_BUILD_TYPE": "Release"
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SHARED_LIBS": "ON"
+            }
+        },
+        {
+            "name": "release-x86-dll",
+            "displayName": "Release x86 (DLL)",
+            "inherits": "base-x86",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "BUILD_SHARED_LIBS": "ON"
             }
         }
     ],
@@ -86,6 +105,11 @@
             "configurePreset": "release-x64"
         },
         {
+            "name": "release-x64-dll",
+            "displayName": "Build Release x64 (DLL)",
+            "configurePreset": "release-x64-dll"
+        },
+        {
             "name": "debug-x86",
             "displayName": "Build Debug x86",
             "configurePreset": "debug-x86"
@@ -94,6 +118,11 @@
             "name": "release-x86",
             "displayName": "Build Release x86",
             "configurePreset": "release-x86"
+        },
+        {
+            "name": "release-x86-dll",
+            "displayName": "Build Release x86 (DLL)",
+            "configurePreset": "release-x86-dll"
         }
     ]
 }
