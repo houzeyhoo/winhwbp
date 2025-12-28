@@ -3,6 +3,7 @@ project(winhwbp LANGUAGES C VERSION 0.1.0)
 
 option(BUILD_SHARED_LIBS "Build DLL" OFF)
 option(WINHWBP_BUILD_TESTS "Build test suite" OFF)
+option(WINHWBP_BUILD_EXAMPLE "Build example program" OFF)
 option(WINHWBP_INSTALL "Create install target" ${PROJECT_IS_TOP_LEVEL})
 
 if (NOT WIN32)
@@ -28,6 +29,10 @@ if (WINHWBP_BUILD_TESTS)
     # Code's CMake Tools extension to discover tests properly
     enable_testing()
     add_subdirectory(tests)
+endif()
+
+if (WINHWBP_BUILD_EXAMPLE)
+    add_subdirectory(example)
 endif()
 
 if (WINHWBP_INSTALL)
