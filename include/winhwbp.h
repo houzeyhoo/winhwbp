@@ -38,11 +38,8 @@ typedef enum _WINHWBP_LEN
 {
     WINHWBP_LEN_1,
     WINHWBP_LEN_2,
-#if defined(_WIN64)
-    /* x64 only */
-    WINHWBP_LEN_8,
-#endif
-    WINHWBP_LEN_4 = 0x3,
+    WINHWBP_LEN_8, /* x64 only */
+    WINHWBP_LEN_4,
 } WINHWBP_LEN;
 
 /* Represents user-configurable breakpoint information. */

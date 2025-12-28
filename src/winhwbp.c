@@ -65,7 +65,7 @@ static BOOL IsValidConfig(const WINHWBP_PCONFIG pConfig)
     }
 #if !defined(_WIN64)
     /* On x86, length 8 is invalid */
-    if (pConfig->length == 2)
+    if (pConfig->length == WINHWBP_LEN_8)
     {
         return FALSE;
     }
