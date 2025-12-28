@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(winhwbp LANGUAGES C VERSION 0.1.0)
+project(winhwbp LANGUAGES C VERSION 1.0.0)
 
 option(BUILD_SHARED_LIBS "Build DLL" OFF)
 option(WINHWBP_BUILD_TESTS "Build test suite" OFF)
